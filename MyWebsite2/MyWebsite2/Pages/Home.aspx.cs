@@ -9,6 +9,18 @@ namespace MyWebsite2.Pages
 {
     public partial class Home : System.Web.UI.Page
     {
+        Employee user = new Employee();
 
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        ShowUserDetials();
+    }
+
+    private void ShowUserDetials()
+    {
+        user = ((MasterPage)this.Master).currentUser;
+        lblDetails.Text = user.Username.ToString();
+    }
     }
 }
