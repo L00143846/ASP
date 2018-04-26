@@ -15,12 +15,13 @@ namespace MyWebsite2
     public partial class Syslog
     {
         public long RefID { get; set; }
-        public string UserID { get; set; }
-        public Nullable<int> LogID { get; set; }
+        public int UserID { get; set; }
         public System.DateTime Timestamp { get; set; }
+        public string Category { get; set; }
+        public string Description { get; set; }
         public string Edited_Table { get; set; }
         public string Edited_PK { get; set; }
     
-        public virtual Employee_Login Employee_Login { get; set; }
+        public virtual Employee Employee { get; set; }
     }
 }

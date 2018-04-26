@@ -9,64 +9,64 @@ namespace MyWebsite2.Pages
 {
     public partial class Login : System.Web.UI.Page
     {
-        EquipMaintSys1Entities db = new EquipMaintSys1Entities();
+        EquipMaintSys1Entities1 db = new EquipMaintSys1Entities1();
         private Employee user = new Employee();
-        //public Employee currentUser = new Employee();
 
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }// end Page_Load
 
-        //private void CreateALog(int userID, string category, string description)
-        //            try
-        //            {
-        //                {
-        //            Logs Logs = new Logs();
-        //            Logs.userID = userID;
-        //            Logs.category = category;
-        //            Logs.description = description;
-        //            db.logs.Add(Logs);
-        //            int success = db.SaveChanges();
-        //            if(success == 0)
-        //                    {
-        //                    lblSuccess.Text = "Error Creating Logs.";
-        //                    }// end IF
-
-        //        }// end Try
-        //            catch (Exception ex)
-        //            { 
-        //               lblSuccess.Text = "Error in database" + ex.
-        //            }// end Catch
-
-        //          }// end CreateLog
+        private int CreateALog(int userID, string category, string description)
+        {
+            int saveSuccess = 0;
+            try
+            {
+                Syslog log = new Syslog();
+                /*log.UserID = UserID;*/
+                log.Timestamp = DateTime.Now;
+                log.Category = category;
+                log.Description = description;
+                db.Syslogs.Add(log);
+                saveSuccess = db.SaveChanges();
+                if (saveSuccess == 0)
+                {
+                    lblSuccess.Text = "Error creating logs.";
+                }
+            }
+            catch (Exception ex)
+            {
+                lblSuccess.Text = "Error in database " + ex.InnerException;
+            }
+            return (saveSuccess);
+        }// end CreateLog
 
 
         protected void BtnLogin_Click(object sender, EventArgs e)
         {
-        bool authenticated = false;
-        var userName = TbxUsername.Text.Trim();
-        var passwd = TbxPassword.Text.Trim();
-        
-            foreach (var userRecord in db.Employees.Where(t => t.Username == userName && t.Phrase == passwd))
+            int saveSuccess = 0;
+            bool authenticated = false;
+            var userName = TbxUsername.Text.Trim();
+            var passwd = TbxPassword.Text.Trim();
+
+                foreach (var userRecord in db.Employees.Where(t => t.Username == userName && t.Phrase == passwd))
                 {
                 user = userRecord;
                 authenticated = true;
-                //CreateALog(user.UserID, "Login", "User " + " authenticated successfully.");
-                break;
-                ((MasterPage)this.Master).currentUser = this.user;
-            }// end foreach
+                }// end foreach
 
-            if (authenticated)
-                {
-                //((MasterPage)this.Master).currentUser = this.user;
-                Response.Redirect("~/Pages/Home.aspx");
-                }// end if
-            else
-                {
-                lblSuccess.Text = "Problem logging in, try again.";
-                //ErrorMessage.Visible = true;
-                }// end else
+                saveSuccess = CreateALog(user.UserID, "Login", "User " + user.Username.ToString() + " authenticated successfully.");
+
+                    if (authenticated && saveSuccess == 1)
+                    {
+                    HttpContext.Current.Session["currentUser"] = user;
+                    Response.Redirect("~/Pages/Home.aspx");
+                    }// end if
+                        else
+                        {
+                        lblSuccess.Text = "Problem logging in, try again.";
+                        //ErrorMessage.Visible = true;
+                        }// end else
 
 
 

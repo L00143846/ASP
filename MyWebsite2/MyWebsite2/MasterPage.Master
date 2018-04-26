@@ -15,8 +15,8 @@
         <div id="banner">
             <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/MyBanner.png" Width="100%" />
         </div>
-        <div id="navigation">
-            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">
+        <div id="navigation">            
+            <asp:Menu ID="Menu1" runat="server" Orientation="Horizontal">                
                 <Items>
                     <asp:MenuItem NavigateUrl="~/Pages/Home.aspx" Text="Home" ToolTip="Click here to go to Home page." Value="Home"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/Pages/About.aspx" Text="About" ToolTip="Click here to view About." Value="About"></asp:MenuItem>
@@ -24,6 +24,7 @@
                     <asp:MenuItem NavigateUrl="~/Pages/Login.aspx" Text="Logout" Value="Logout"></asp:MenuItem>
                 </Items>
             </asp:Menu>
+            <asp:Button ID="btnLogout" runat="server" Text="Logout" />
         </div>
         <div id="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

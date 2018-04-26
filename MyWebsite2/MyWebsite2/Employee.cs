@@ -20,6 +20,7 @@ namespace MyWebsite2
             this.Employee_Login = new HashSet<Employee_Login>();
             this.Fault_Log = new HashSet<Fault_Log>();
             this.Maintenance_Schedule = new HashSet<Maintenance_Schedule>();
+            this.Syslogs = new HashSet<Syslog>();
         }
     
         public int UserID { get; set; }
@@ -37,5 +38,7 @@ namespace MyWebsite2
         public virtual ICollection<Fault_Log> Fault_Log { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Maintenance_Schedule> Maintenance_Schedule { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Syslog> Syslogs { get; set; }
     }
 }

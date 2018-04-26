@@ -12,15 +12,29 @@ namespace MyWebsite2.Pages
         Employee user = new Employee();
 
 
-    protected void Page_Load(object sender, EventArgs e)
-    {
-        ShowUserDetials();
-    }
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            // Retrieve user details from a session saved in the login file
+            Employee user = (Employee)Session["currentUser"];
 
-    private void ShowUserDetials()
-    {
-        user = ((MasterPage)this.Master).currentUser;
-        lblDetails.Text = user.Username.ToString();
-    }
-    }
-}
+            // Build the login message
+            string foreName = user.First_Name;
+            string surName = user.Surname;
+            string userName = user.Username;
+            string welcomeMessage = "Welcome " + foreName + " " + surName + ". Please select an option";
+            lblDetails.Text = welcomeMessage;
+        }// end Page_Load
+
+
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("~/Pages/Login.aspx");
+        }// end btnLogout_Click
+
+
+
+
+    }// end class Home
+}// end namespace

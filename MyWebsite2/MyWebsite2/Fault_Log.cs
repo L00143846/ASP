@@ -15,8 +15,8 @@ namespace MyWebsite2
     public partial class Fault_Log
     {
         public int IncindentID { get; set; }
-        public string Start_Time { get; set; }
-        public string End_Time { get; set; }
+        public System.DateTime Start_Time { get; set; }
+        public Nullable<System.DateTime> End_Time { get; set; }
         public bool Downtime { get; set; }
         public string Equipment { get; set; }
         public string Component { get; set; }

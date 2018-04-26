@@ -9,7 +9,7 @@ namespace MyWebsite2
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        EquipMaintSys1Entities db = new EquipMaintSys1Entities();
+        EquipMaintSys1Entities1 db = new EquipMaintSys1Entities1();
         Employee user = new Employee();
 
         public Employee currentUser = new Employee();
