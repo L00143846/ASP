@@ -23,7 +23,7 @@ namespace MyWebsite2.Pages
             try
             {
                 Syslog log = new Syslog();
-                /*log.UserID = UserID;*/
+                log.UserID = user.UserID;
                 log.Timestamp = DateTime.Now;
                 log.Category = category;
                 log.Description = description;
@@ -53,6 +53,7 @@ namespace MyWebsite2.Pages
                 {
                 user = userRecord;
                 authenticated = true;
+                break;
                 }// end foreach
 
                 saveSuccess = CreateALog(user.UserID, "Login", "User " + user.Username.ToString() + " authenticated successfully.");

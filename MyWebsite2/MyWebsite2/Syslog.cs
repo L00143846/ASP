@@ -19,8 +19,6 @@ namespace MyWebsite2
         public System.DateTime Timestamp { get; set; }
         public string Category { get; set; }
         public string Description { get; set; }
-        public string Edited_Table { get; set; }
-        public string Edited_PK { get; set; }
     
         public virtual Employee Employee { get; set; }
     }

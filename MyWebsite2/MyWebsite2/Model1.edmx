@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EquipMaintSys1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EquipMaintSys1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Component">
           <Key>
             <PropertyRef Name="SerialID" />
@@ -124,8 +124,6 @@
           <Property Name="Timestamp" Type="datetime" Nullable="false" />
           <Property Name="Category" Type="varchar(max)" />
           <Property Name="Description" Type="varchar(max)" />
-          <Property Name="Edited_Table" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Edited_PK" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK__Component__Equip__33D4B598">
           <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
@@ -271,7 +269,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Syslog__UserID__5812160E">
+        <Association Name="FK__Syslog__UserID__5CD6CB2B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Syslog" Type="Self.Syslog" Multiplicity="*" />
           <ReferentialConstraint>
@@ -341,13 +339,12 @@
             <End Role="Equipment" EntitySet="Equipment" />
             <End Role="Maintenance_Schedule" EntitySet="Maintenance_Schedule" />
           </AssociationSet>
-          <AssociationSet Name="FK__Syslog__UserID__5812160E" Association="Self.FK__Syslog__UserID__5812160E">
+          <AssociationSet Name="FK__Syslog__UserID__5CD6CB2B" Association="Self.FK__Syslog__UserID__5CD6CB2B">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Syslog" EntitySet="Syslog" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EquipMaintSys1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -495,8 +492,6 @@
           <Property Name="Timestamp" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Category" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Edited_Table" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Edited_PK" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__Syslog__UserID__5812160E" FromRole="Syslog" ToRole="Employee" />
         </EntityType>
         <Association Name="FK__Component__Equip__33D4B598">
@@ -850,9 +845,7 @@
                 <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
                 <ScalarProperty Name="Category" ColumnName="Category" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Edited_Table" ColumnName="Edited_Table" />
-                <ScalarProperty Name="Edited_PK" ColumnName="Edited_PK" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
         </EntityContainerMapping>
