@@ -24,7 +24,6 @@
                     <asp:MenuItem NavigateUrl="~/Pages/Login.aspx" Text="Logout" Value="Logout"></asp:MenuItem>
                 </Items>
             </asp:Menu>
-            <asp:Button ID="btnLogout" runat="server" Text="Logout" />
         </div>
         <div id="content">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
